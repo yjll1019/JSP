@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>구현 실습</title>
+<title>구현 실습 : 구구단 출력하기</title>
 </head>
 <body>
 <table border="1">
