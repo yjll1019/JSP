@@ -23,7 +23,7 @@
 		<td><%= s1 %></td>
 	</tr>
 	<tr>
-		<td><% out.print(s1.toUpperCase()); %>
+		<td><% out.print(s1.toUpperCase()); %></td>
 		<td><%= s1.toUpperCase() %></td>
 	</tr>
 	<tr>
@@ -31,8 +31,8 @@
 		<td><%= Math.PI %></td>
 	</tr>
 	<tr>
-		<td><% out.print(s1 + s2); %> %>
-		<td><%= s1+s2 %>
+		<td><% out.print(s1 + s2); %></td>
+		<td><%= s1+s2 %></td>
 	</tr>
 	
 </table>
