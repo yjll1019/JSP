@@ -4,21 +4,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<title>구현 실습 : 구구단 출력하기</title>
+<title>Insert title here</title>
 </head>
 <body>
-
 <table border="1">
 <%
-	for(int i=2; i<=9; ++i){
-		out.println("        <tr>");
-		for(int j=1; j<=9; ++j){
-			out.println("       <td>");
-			out.println(i+" x "+j+" = "+i*j);
-			out.println("       </td>");
-		}
-		out.println("        </tr>");
+	for(int i=1; i<=9; ++i){
+		out.println("         <tr>");
+		for(int j=2; j<=9; ++j){
+			out.println("<td>");
+			out.println(j+" x "+i+" = "+ j*i);
+			out.println("</td>");
+		}	
+		out.println("         </tr>");
 	}
+
 %>
 </table>
 </body>
