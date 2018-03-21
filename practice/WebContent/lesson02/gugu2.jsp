@@ -9,15 +9,19 @@
 <body>
 <table border="1">
 <%
-	for(int i=1; i<=9; ++i){
-		out.println("         <tr>");
-		for(int j=2; j<=9; ++j){
-			out.println("<td>");
-			out.println(j+" x "+i+" = "+ j*i);
-			out.println("</td>");
-		}	
-		out.println("         </tr>");
+out.print("         <tr>");	
+
+	for(int i=0; i<2; i++){		
+			for(int j=1; j<5; ++j){
+				out.print("         <td>");
+				for(int z=1; z<10; ++z){
+					out.print((4*i+j+1)+" x "+z+" = "+((4*i+j+1)*z));
+					out.print("<br>");
+				}
+				out.print("         </td>");
+			}			
 	}
+	out.print("         </tr>");
 
 %>
 </table>
