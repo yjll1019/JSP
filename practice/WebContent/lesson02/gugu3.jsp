@@ -25,5 +25,54 @@
 	}
 %>
 </table>
+<br><br>
+
+
+<table border="1">
+<tr>
+	<%
+		for(int i=2; i<=5; ++i){
+		out.println("          <td>");
+			for(int j=1; j<=9; ++j){
+				out.println(i+"x"+j+"="+i*j+"<br>"); 
+			}
+		out.println("          </td>");
+		}
+	%>
+</tr>
+<tr>
+	<%
+		for(int i=6; i<=9; ++i){
+		out.println("          <td>");
+			for(int j=1; j<=9; ++j){
+				out.println(i+"x"+j+"="+i*j+"<br>"); 
+			}
+		out.println("          </td>");
+		}
+	%>
+</tr>
+</table>
+
+
+<br><br>
+<table border="1">
+<tr>
+	<%
+		out.println("          <tr>");
+		for(int i=2; i<=9; ++i){
+			if(i==6) {
+				out.println("          </tr>");
+				out.println("          <tr>");
+			}
+		out.println("          <td>");
+			for(int j=1; j<=9; ++j){
+				out.println(i+"x"+j+"="+i*j+"<br>");
+			}
+		out.println("          </td>");
+			if(i==9) out.println("          </tr>");
+		}
+	%>
+</tr>
+</table>
 </body>
 </html>

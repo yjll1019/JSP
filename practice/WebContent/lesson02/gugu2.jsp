@@ -25,5 +25,19 @@ out.print("         <tr>");
 
 %>
 </table>
+<br>
+<table border="1"> <!-- 더 간결하게!!!! -->
+<tr>
+	<%
+		for(int i=2; i<=9; ++i){
+		out.println("          <td>");
+			for(int j=1; j<=9; ++j){
+				out.println(i+"x"+j+"="+i*j+"<br>"); 
+			}
+		out.println("          </td>");
+		}
+	%>
+</tr>
+</table>
 </body>
 </html>
