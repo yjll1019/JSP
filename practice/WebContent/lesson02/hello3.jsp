@@ -15,7 +15,7 @@
 <!--스크립릿 태그는 자바 코드를 이용하기 때문에 ; 필요  -->
 <%
 	String s1 = "hello world";
-	String s2 = "JSP!!";
+	String s2 = " JSP!!";
 %>
 <table>
 	<tr>
