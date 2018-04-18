@@ -73,7 +73,7 @@ if (request.getMethod().equals("POST")) {
 <form method="post">
   <div class="form-group">
     <label>사용자 아이디</label>
-    <input type="text" class="form-control" name="id" value="<%= request.getParameter("id")==null?"":request.getParameter("id") %>" />
+    <input type="text" class="form-control" name="id" value="<%= id==-1?"":request.getParameter("id") %>" />
   </div>
   <div class="form-group">
     <label>학번</label>
