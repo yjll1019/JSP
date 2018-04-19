@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList, lecture1.jdbc1.*" %>
 <%
-ArrayList<User> list = UserDAO.findAll();
+	
+	String s = request.getParameter("name");
+	String name = s==null? "":s;
+	ArrayList<User> list = UserDAO.findByName(s);
 %>
 <html>
 <head>
@@ -15,11 +18,19 @@ ArrayList<User> list = UserDAO.findAll();
       thead th { background-color: #eee; }
       table.table { width: 700px; }
   </style>
-<title>User 목록</title>
+<title></title>
 </head>
 <body>
 <div class = "container">
 <h1>학생 목록</h1>
+
+<form class="form-inline">
+<div class="form-group">
+	<label>이름</label>
+	<input type="text" class="form-control" name="name" value="<%= name %>"/>
+</div>
+<button type="submit" class="btn btn-primary">조회</button>
+</form>
 <table class="table table-bordered table-condensed">
 <thead>
 	<tr>

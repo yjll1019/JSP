@@ -21,6 +21,7 @@ public class DepartmentDAO {
                 department.setId(resultSet.getInt("id"));
                 department.setDepartmentName(resultSet.getString("departmentName"));
                 list.add(department);
+
             }
             return list;
         }
