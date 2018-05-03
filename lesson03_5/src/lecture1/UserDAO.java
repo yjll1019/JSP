@@ -72,15 +72,44 @@ public class UserDAO {
 	}
 	
 	public static void update(User user) throws Exception{
-		String sql = "update user set name=?, departmentId=?, userType=? where id=?";
+		String sql = "update user set name=?, departmentId=?, userType=?, email=?, enabled=? where id=?";
 		try(Connection connection = DB.getConnection("student1");
 			PreparedStatement statement = connection.prepareStatement(sql)){
 			statement.setString(1, user.getName());		
 			statement.setInt(2, user.getDepartmentId());		
 			statement.setString(3, user.getUserType());		
-			statement.setInt(4, user.getId());		
+			statement.setString(4, user.getEmail());
+			statement.setBoolean(5, user.isEnabled());
+			statement.setInt(6, user.getId());
 			statement.executeUpdate();
 		}
 
+	}
+	
+	public static List<User> findAllName(int currentPage, int pageSize, String name) throws Exception{
+		String sql = "select u.*, d.departmentName from user u left join department d on u.departmentId = d.id where name like ?" + 
+				"limit ?,?";
+		ArrayList<User> list = new ArrayList<User>();
+		try(Connection connection = DB.getConnection("student1");
+			PreparedStatement statement = connection.prepareStatement(sql)){
+			statement.setString(1, name+"%");
+			statement.setInt(2, (currentPage-1)*pageSize);
+			statement.setInt(3, pageSize);
+			try(ResultSet resultSet = statement.executeQuery()){
+				while(resultSet.next()) {
+					User u = new User();
+					u.setId(resultSet.getInt("id"));
+					u.setUserId(resultSet.getString("userid"));
+					u.setName(resultSet.getString("name"));
+					u.setEmail(resultSet.getString("email"));
+					u.setDepartmentId(resultSet.getInt("departmentId"));
+					u.setEnabled(resultSet.getBoolean("enabled"));
+					u.setUserType(resultSet.getString("userType"));
+					u.setDepartmentName(resultSet.getString("departmentName"));
+					list.add(u);
+				}
+			}
+		}
+		return list;
 	}
 }

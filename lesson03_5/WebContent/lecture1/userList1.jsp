@@ -8,7 +8,9 @@
 	String pg = request.getParameter("pg");
 	if(pg!=null) currentPage = Integer.parseInt(pg);
 	
-	List<User> list = UserDAO.findAll(currentPage, pageSize);
+	String name = (request.getParameter("search")==null? "": request.getParameter("search"));
+	
+	List<User> list = UserDAO.findAllName(currentPage, pageSize, name);
 	int recordCount = UserDAO.count();
 %>
 <!DOCTYPE html>
@@ -23,12 +25,14 @@
       body { font-family: 굴림체; }
       thead th { background-color: #eee; }
       table.table { width: 700px; }
-      tr:hover td { background-color: #ffe; cursor: pointer; } //pointer 마우스 손가락 모양
+      tr:hover td { background-color: #ffe; cursor: pointer; } 
   </style> 
 </head> 
 <body> 
 <div class="container">
-<h1>학생목록</h1>
+<h1>User 목록</h1>
+
+
 <table class="table table-bordered table-condensed">
 	<thead>
 		<tr>
@@ -38,17 +42,19 @@
 			<td>이메일</td>
 			<td>학과</td>
 			<td>사용자유형</td>
+			<td>enabled</td>
 		</tr>
 	</thead>
 	<tbody>
 		<% for(User u : list){  %>
-		<tr data-url="userEdit1.jsp?id=<%= u.getId()%>&pg=<%=(pg==null)? 1:pg %>">
+		<tr data-url="userEdit1.jsp?id=<%= u.getId()%>&pg=<%=(pg==null)? 1:pg %>&search=<%= name%>">
 		<td><%= u.getId() %></td>
 		<td><%= u.getUserId() %></td>
 		<td><%= u.getName() %></td>
 		<td><%= u.getEmail() %></td>
 		<td><%= u.getDepartmentName() %></td>
 		<td><%= u.getUserType() %></td>
+		<td><%= u.isEnabled() %></td>
 		</tr>
 		<% } %>
 	</tbody>

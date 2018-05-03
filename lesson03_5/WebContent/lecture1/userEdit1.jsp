@@ -21,6 +21,8 @@ else {//userId name email department userType
     user.setDepartmentId(Integer.parseInt(s2));
     user.setEmail(request.getParameter("email"));
     user.setUserType(request.getParameter("userType"));
+    String s3 = request.getParameter("enabled");
+    user.setEnabled(s3.equals("true")? true:false);
     
     if (s1 == null || s1.length() == 0)  //아이디 검사 
         에러메시지 = "ID를 입력하세요";
@@ -56,7 +58,7 @@ else {//userId name email department userType
 
 <div class="container">
 
-<h1>학생 등록</h1>
+<h1>User 등록</h1>
 <hr />
 
 <form method="post">
@@ -82,11 +84,24 @@ else {//userId name email department userType
   </div>
   <div class="form-group">
     <label>이메일</label>
-    <input type="text" class="form-control" name="email" value="<%= user.getEmail() %>" />
+    <input type="email" class="form-control" name="email" value="<%= user.getEmail() %>" />
   </div>
     <div class="form-group">
     <label>사용자유형</label>
-    <input type="text" class="form-control" name="userType" value="<%= user.getUserType() %>" />
+    <select class="form-control" name="userType">
+    	<% String s = user.getUserType(); %>
+    	<option value="교수" <%=(s.equals("교수")? "selected": "") %>>교수</option>
+		<option value="학생" <%=(s.equals("학생")? "selected": "") %>>학생</option>
+		<option value="관리자" <%=(s.equals("관리자")? "selected": "") %>>관리자</option>
+    </select>
+  </div>
+  <div class ="form-group">
+  	<label>enabled</label>
+  	<% 
+  		boolean b = user.isEnabled();
+  	%>
+  	<input type="radio" name="enabled" value="true" <%=(b==true)? "checked":"" %>>동의
+  	<input type="radio" name="enabled" value="false"  <%=(b==false)? "checked":""%>>비동의
   </div>
   <button type="submit" class="btn btn-primary">
     <i class="glyphicon glyphicon-ok"></i> 저장
