@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Resource name="jdbc/student1" auth="Container" type="javax.sql.DataSource"
+		driverClassName="com.mysql.jdbc.Driver" maxTotal="50" maxIdle="10"
+		maxWaitMillis="10000" username="user1" password="test123"
+		url="jdbc:mysql://localhost:3306/student1?useUnicode=true&amp;characterEncoding=utf8" />
+</Context>
+<!-- type: 웹에서 이 리소스를 사용할 때 DataSource를 리턴한다. -->
+<!--  user1 : 접속 계정  password: 접속할 계정 비밀번호 -->
+<!--  driverClassName : jdbc 드라이버  -->
+<!-- maxIdle : 커넥션 풀 유지를 위해 최대 대기 connection 숫자 -->
